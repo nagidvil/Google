@@ -1,11 +1,12 @@
 # Google
 # 2020 Google Girl Hackathon_Semifinal Round_社会主义接班人
+# 基于微博超话的医疗数据分析
 ## 项目运行指南
-在本地打开项目，进入webFront文件夹，先执行npm install
-安装成功后，执行npm run start
-在浏览器中打开http://localhost:4200/
-即可访问操作
-如果操作不成功，请您可以修改webFront中的proxy.fig.json中的"target":为http://39.106.175.112:8080/GoogleHTML
+在本地打开项目，进入webFront文件夹，先执行npm install  
+安装成功后，执行npm run start  
+在浏览器中打开http://localhost:4200/  
+即可访问操作  
+如果操作不成功，请您可以修改webFront中的proxy.fig.json中的"target":为http://39.106.175.112:8080/GoogleHTML  
 
 Demo
 ## 网站访问：
