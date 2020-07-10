@@ -1,0 +1,35 @@
+<div class="content">
+    
+    <div class="cHeader">
+        <h1>根据<span class="bold">{{webUrl}}</span>获得以下有用信息</h1>
+    </div>
+    <div class="info classfix">
+        <ul class="classfix">
+            <li>
+                <iframe [src]="iframeSrc"></iframe>
+            </li>
+            <li>
+                <div class="infoBox">
+                    <label>患者姓名</label>
+                    <span class="defalut"  *ngIf="nameList==null">暂无信息</span>
+                    <div *ngIf="nameList!=null">
+                        <ul  *ngFor="let name of nameList " >
+                            <li><span>{{name}}</span></li>
+                        </ul>
+                    </div> 
+                </div>
+            </li>
+            <li>
+                <div class="infoBox">
+                    <label>疾病名称</label>
+                    <span class="defalut" *ngIf="diseaseList==null">暂无信息</span>
+                    <div *ngIf="diseaseList!=null">
+                        <ul  *ngFor="let disease of diseaseList " >
+                            <li><span>{{disease}}</span></li>
+                        </ul>
+                    </div> 
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+
+<div class="main-content classfix">
+        <div class="inter-window">
+            <h2>医疗数据分析平台</h2>
+            <div class="tit">
+                <h1>注册</h1>
+                <a class="alogin" [routerLink]="[ '/login' ]">立即登录</a>
+                <span class="errorMsg">
+                    {{msg}}
+                </span>
+            </div>
+        
+            <form action="userServlet" method="POST">
+                <input type="hidden" name="action" value="regist">
+                <div>
+                    <label>用户名称：</label>
+                    <input class="itxt" type="text" placeholder="请输入用户名"
+                        autocomplete="off" tabindex="1" name="username" id="username"
+                        [(ngModel)]="username"
+                            />
+                    <br />
+                    <br />
+                </div>
+                
+                <div>
+                    <label>用户密码：</label>
+                    <input class="itxt" type="password" placeholder="请输入密码"
+                        autocomplete="off" tabindex="1" name="password" id="password" [(ngModel)]="password"/>
+                    <br />
+                    <br />
+                </div>
+                <div>
+                    <label>确认密码：</label>
+                    <input class="itxt" type="password" placeholder="确认密码"
+                        autocomplete="off" tabindex="1" name="repwd" id="repwd" [(ngModel)]="repwd"/>
+                    <br />
+                    <br />
+                </div>
+                <div>
+                    <label>电子邮件：</label>
+                    <input class="itxt" type="text" placeholder="请输入邮箱地址"
+                        autocomplete="off" tabindex="1" name="email" id="email" 
+                        [(ngModel)]="email"
+                        />
+                    <br />
+                    <br />
+                </div>
+                <div>
+                    <label>验证码：</label>
+                    <input class="itxt" type="text" name="code" style="width: 150px;" id="code" [(ngModel)]="code"/>
+                    <a (click)="getRandomCode()"><span class="verifyCode">{{codeSrc}}</span></a>
+                    <br />
+                    <br />
+                </div>
+                
+                <div>
+                    <button id="sub_btn" (click)="Regist()">注册</button>
+                </div>
+            
+            </form>
+        </div>
+    </div>

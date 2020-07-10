@@ -1,0 +1,37 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1550854",
+      "name": "数据",
+      "font_class": "shuju",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "3169685",
+      "name": "数据",
+      "font_class": "shuju1",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "3620081",
+      "name": "建议",
+      "font_class": "advice",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "13814789",
+      "name": "数据 (14)",
+      "font_class": "shuju2",
+      "unicode": "e5e7",
+      "unicode_decimal": 58855
+    }
+  ]
+}

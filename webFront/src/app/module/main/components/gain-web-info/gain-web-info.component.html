@@ -1,0 +1,20 @@
+<div class="content">
+    <div class="inner classfix">
+        <form >
+            <ul>
+                <!-- <li>
+                    <label>默认网址</label><br/>
+                    <input name="webUrlName" type="checkbox" value="weibo" checked="checked"/>微博
+                    <input name="webUrlName" type="checkbox" value="postBar" checked="checked"/>贴吧
+                    <input name="webUrlName" type="checkbox" value="waterDropper" checked="checked"/>水滴筹
+                </li> -->
+                <li>
+                    <label>自定义网址</label><br/>
+                    <input class="selectSub" type="text" placeholder="请输入网址（可不填）"
+                        autocomplete="off" tabindex="1" name="webUrl" [(ngModel)]="webUrl"/>
+                </li>
+            </ul>
+            <button class="submit" (click)="getWebInfo()">提交</button>
+        </form>
+    </div>
+</div>

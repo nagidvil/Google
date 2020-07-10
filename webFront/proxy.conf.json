@@ -1,0 +1,6 @@
+{
+    "/api":{
+      "target":"http://172.29.184.23:8080/GoogleHTML",
+      "secure": false
+    }
+}

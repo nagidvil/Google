@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="../../static/login_regist_base.css">
+    <link rel="stylesheet" href="static/css/login.css">
+    <script>
+        $(function(){
+
+            // 提交表单的验证
+            $("#sub_btn").click(function(){
+
+                var usernameText=$("#username").val();
+
+                var usernamePatt=/^\w{5,12}$/;
+                var flag=true;
+                if(!usernamePatt.test(usernameText)){
+                    $("span.errorMsg").text("用户名不合法");
+                    flag=false;
+                    return false;
+                }
+                $("span.errorMsg").text("");
+
+
+                var passwordText=$("#password").val();
+                var passwordPatt=/^\w{5,12}$/;
+                if(!passwordPatt.test(passwordText))
+                {
+                    $("span.errorMsg").text("密码不合法");
+                    flag=false;
+                    return false;
+                }
+                $("span.errorMsg").text("");
+
+                return flag;
+            })
+            
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 首页内容区 -->
+    <div class="main-content classfix">
+        <div class="inter-window">
+            <h2>医疗数据分析平台</h2>
+            <div class="tit classfix">
+                <h1>账户登录</h1>
+                <a href="pages/user/regist.jsp">立即注册</a>
+            </div>
+            <div class="msg_cont">
+                <b></b>
+                <span class="errorMsg">
+                	${ empty requestScope.msg ? "请输入用户名和密码":requestScope.msg }
+                </span>
+            </div>
+        
+            <form action="userServlet" method="POST">
+            	<input type="hidden" name="action" value="login">
+                <div>
+					<label>用户名称：</label>
+					<input class="itxt" type="text" placeholder="请输入用户名"
+						   autocomplete="off" tabindex="1" name="username" value="${empty requestScope.username?cookie.username.value:requestScope.username}"/>
+					<br />
+					<br />
+
+                </div>
+                
+                <div>
+					<label>用户密码：</label>
+					<input class="itxt" type="password" placeholder="请输入密码"
+						   autocomplete="off" tabindex="1" name="password" />
+					<br />
+					<br />
+                </div>
+                <div>
+                    <input type="submit" value="登录" id="sub_btn">
+                </div>
+               
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

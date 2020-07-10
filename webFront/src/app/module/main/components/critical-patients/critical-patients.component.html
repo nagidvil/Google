@@ -1,0 +1,61 @@
+<div class="content">
+    <!-- <img src="../../../../../assets/1.jpg" alt="没有图片"> -->
+    <div>
+        <div class="info_board"><div class="small_font"><font face="微软雅黑">首页 / 推荐建议 / 危急患者 </font></div></div>
+        <!-- <div class="table"> -->
+        <div class="default" *ngIf="user_ID_list==null">暂无危急患者</div>
+        <ul *ngFor=
+            "
+                let user of user_ID_list;
+                let release_time of release_time_list;
+                let name of name_list;
+                let age of age_list;
+                let location of location_list;
+                let ill_time of ill_time_list;
+                let phone_num1 of phone_num1_list;
+                let phone_num2 of phone_num2_list;
+                let original_content of original_content_list;
+                let i=index;
+            "
+        >
+            <li>
+                <div class="table classfix" >
+        
+                    <div class="basic_info">
+                        <div class="attribute">用户ID:</div>
+                        <div class="attribute_content">{{user_ID_list[i]}}</div>
+                        <div class="attribute">发布时间:</div>
+                        <div class="attribute_content">{{release_time_list[i]}}</div>
+                        <div class="attribute">姓名:</div>
+                        <div class="attribute_content">{{name_list[i]}}</div>
+                        <div class="attribute">年龄:</div>
+                        <div class="attribute_content">{{age_list[i]}}</div>
+                        <div class="attribute location">地址:</div>
+                        <div class="attribute_content location">{{location_list[i]}}</div>
+                        <div class="attribute">患病时间:</div>
+                        <div class="attribute_content">{{ill_time_list[i]}}</div>
+                        <div class="attribute">联系方式1:</div>
+                        <div class="attribute_content">{{phone_num1_list[i]}}</div>
+                        <div class="attribute">联系方式2:</div>
+                        <div class="attribute_content">{{phone_num2_list[i]}}</div>
+                    </div>
+                    <div class="original_content">
+                        <div class="attribute" style="width:100%">求助原文</div>
+                        <div class="original_content_text">{{original_content}}</div>
+                    </div>
+                    <div class="but_return">
+                        <button class="but" type="submit" (click)="getCriticalPatient()">返回</button>
+                    </div>
+                    <div class="but_frame">
+                        <button class="but" type="submit" (click)="getSimilarPatient(i)">查看相似患者</button>
+                    </div>
+                </div>
+               
+            </li>
+        </ul>
+        <div class="tip" *ngIf="flag==1" (click)="closeTip()">
+            <span>页面已经更新</span>
+            <span class="cbt">x</span>
+        </div>
+    </div>
+</div>

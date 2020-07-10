@@ -1,0 +1,87 @@
+<div class="content">
+    <div class="info_board"><div class="small_font"><font face="微软雅黑">首页/地区预警 </font></div></div>
+    <div class="picture_board">
+        <div class="img_box picture_board_up">
+            <div class="text_up_title_fond" style="color:#000;font-weight:bold">地区有关病例情况分布图</div>
+            <!-- <ul class="pointer">
+                <li><a class="active" href="javascript:;"></a></li>
+                <li><a class="active" href="javascript:;"></a></li>
+                <li><a class="active" href="javascript:;"></a></li>
+            </ul> -->
+            <div class="defalut"  *ngIf="allPic==null">暂无图片（可选择省份显示）</div> 
+            <div class="pic_div classfix" *ngIf="allPic!=null">
+                <!-- <img class="re_img" src="data:image/png;base64,{{allPic[1]}}"> -->
+                <ul class="classfix pic_ul" *ngFor="let src of allPic ">
+                    
+                    <li *ngIf="src!=''"><img class="re_img" src="data:image/png;base64,{{src}}"></li>
+                </ul>
+                <!-- <ul class="pointer">
+                    <li><a class="active" href="javascript:;"></a></li>
+                    <li><a class="active" href="javascript:;"></a></li>
+                    <li><a class="active" href="javascript:;"></a></li>
+                </ul> -->
+            </div>
+        </div>
+        <div class="picture_board_down classfix">
+            
+            
+            <div class="text_content">
+                <div class="text_up_title_fond_down" style="color:#000;font-weight:bold">防控建议</div>
+                <ul *ngFor="let r of recommend">
+                    <li class="recommand">{{r}}</li>
+                </ul>
+            </div>
+            <ul class="bottom_r classfix">
+                <li class="bottom_rr">
+                    <div class= "text_board_up">
+                        <div class="text_up_title_fond text_tit" style="color:red;font-weight:bold">传染病传播高风险地区</div>
+                            <span class="defalut"  *ngIf="highgradelist==null||highgradelist.length==0">暂无信息</span> 
+                            <div *ngIf="highgradelist!=null">
+                                <ul  *ngFor="let hp of highgradelist " >
+                                    <li><a class="p" (click)="getAllPic(hp)"><span class="province_name">{{hp}}</span></a></li>
+                                </ul>
+                            </div> 
+                        </div>
+                </li>
+                <li class="bottom_rr">
+                    <div class= "text_board_down">
+                        <div class="text_up_title_fond text_tit" style="color:#FC0;font-weight:bold">传染病传播中风险地区</div>
+                            <span class="defalut"  *ngIf="midgradelist==null||midgradelist.length==0">暂无信息</span>
+                            <div *ngIf="midgradelist!=null">
+                                <ul  *ngFor="let mp of midgradelist " >
+                                    <li><a class="p" (click)="getAllPic(mp.province)"><span class="province_name">{{mp}}</span></a></li>
+                                </ul>
+                            </div> 
+                        </div>
+                </li>
+            </ul>
+            <!-- <div class= "text_board"> -->
+                
+                
+            <!-- </div> -->
+        </div>
+    </div>
+
+    <!-- <div class= "text_board">
+        <div class= "text_board_up">
+        <div class="text_up_title_fond text_tit" style="color:red;font-weight:bold">传染病传播高风险地区</div>
+            <span class="defalut"  *ngIf="highgradelist==null||highgradelist.length==0">暂无信息</span> 
+            <div *ngIf="highgradelist!=null">
+                <ul  *ngFor="let hp of highgradelist " >
+                    <li><a class="p" (click)="getAllPic(hp)"><span class="province_name">{{hp}}</span></a></li>
+                </ul>
+            </div> 
+        </div>
+        <div class= "text_board_down">
+        <div class="text_up_title_fond text_tit" style="color:#FC0;font-weight:bold">传染病传播中风险地区</div>
+            <span class="defalut"  *ngIf="midgradelist==null||midgradelist.length==0">暂无信息</span>
+            <div *ngIf="midgradelist!=null">
+                <ul  *ngFor="let mp of midgradelist " >
+                    <li><a class="p" (click)="getAllPic(mp.province)"><span class="province_name">{{mp}}</span></a></li>
+                </ul>
+            </div> 
+        </div>
+    </div> -->
+    
+    
+</div>

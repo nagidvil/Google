@@ -1,0 +1,413 @@
+<div class="content">
+    
+    <div id="kong"></div>
+    <ul class="nav">
+      <li class="selected" (click)="getCountry()">地区</li>
+      <li (click)="getAge()">年龄</li>
+      <li (click)="getTime()">时间</li>
+
+    </ul>
+    <div class="list">
+      <div id="kong"></div>
+      <div id="kong"></div>
+      <ul class="nav1">
+        <li class="selected" (click)="getCountry()">全国分布</li>
+        <li (click)="getProvince()">各省分布</li>
+        <li (click)="getCity()">各城市分布</li>
+
+      </ul>
+      <div class="list1">
+        <div id="kong"></div>
+        <div class="box1">
+          <div id="box1-1">
+            <div class="exp3">
+              <font face="微软雅黑">首页 / 统计分析 / 地区 / 全国</font>
+            </div>
+            <div id="box1-1-1">
+              <font class="tfont" face="黑体" size="8">全国疫情地图</font>
+              
+            </div>
+            <div class="exp3 curtime">
+              <font face="微软雅黑" color="#666666">截至{{date}}</font>
+            </div>
+          </div>
+          <div id="box1-2">
+            <div class="exp5">
+              <div id="box1-2-2">
+                <div class="jiacu"> 累计求助</div>
+              </div>
+            </div>
+            <div id="box1-2-1">
+              <font face="黑体" size="8" color="#990000">{{allNumber}}</font>
+            </div>
+            <div>
+              <span class="exp3">
+                <font face="微软雅黑" color="#666666">较昨日</font>
+              </span>
+              <span class="exp3"><span class="jiacu">
+                  <font face="微软雅黑" color="#990000">+{{increaseNumber}}</font>
+                </span></span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="box2 ">
+          <div id="box2-1">
+            <span class="exp5"><font face="黑体">疫情求助地图</font></span>
+          </div>
+         <!-- <img src="../../../../../assets/image/areaage.png" alt=""> -->
+          <div class="defalut"  *ngIf="allPic==null">暂无图片</div> 
+          <div class="pic_div" *ngIf="allPic!=null">
+              <img class="re_img" src="data:image/png;base64,{{allPic}}">
+          </div>
+        </div>
+        <div class="box3">
+          <div id="box2-1">
+            <span class="exp5"><font face="黑体">求助病例全国数据</font></span>
+          </div>
+          <ul class="base_re" *ngFor="let re_name of basic_results_name;let i=index">
+            <li>
+              <div *ngIf="re_name!='其他'" class="re_box classfix">
+                <span class="exp9 re_box1">{{re_name}}</span>&nbsp;
+                <span class="exp9 re_box2">{{basic_results_num[i]}}例</span>
+              </div>
+            </li>
+          </ul>
+          <ul class="base_re" *ngFor="let re_name of basic_results_name;let i=index">
+            <li>
+              <div *ngIf="re_name=='其他'" class="re_box classfix">
+                <span class="exp9 re_box1">{{re_name}}</span>&nbsp;
+                <span class="exp9 re_box2">{{basic_results_num[i]}}例</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="list1" style="display:none">
+        <div id="kong"></div>
+        <div class="box1">
+          <div id="box1-1">
+            <div class="exp3">
+              <font face="微软雅黑">首页 / 统计分析 / 地区 / 各省</font>
+            </div>
+
+            <div id="box1-1-1">
+              <font class="tfont" face="黑体" size="8">各省疫情地图</font>
+            </div>
+
+            <div class="exp3 curtime">
+              <font face="微软雅黑" color="#666666">截至{{date}}</font>
+            </div>
+          </div>
+
+          <div id="box1-2">
+            <div class="exp5">
+              <div id="box1-2-2">
+                <div class="jiacu"> 累计求助</div>
+              </div>
+            </div>
+            <div id="box1-2-1">
+              <font face="黑体" size="8" color="#990000">{{allNumber}}</font>
+            </div>
+            <div>
+              <span class="exp3">
+                <font face="微软雅黑" color="#666666">较昨日</font>
+              </span>
+              <span class="exp3"><span class="jiacu">
+                  <font face="微软雅黑" color="#990000">+{{increaseNumber}}</font>
+                </span></span>
+            </div>
+          </div>
+        </div>
+        <div class="box2">
+          <div id="box2-1">
+              <span class="exp5">
+                <font face="黑体">疫情求助地图</font>
+              </span>
+              <div class="pochange">
+                <ul class="nav2">
+                  <a href="#" *ngIf="province_p!=null">{{cur_province}}</a>
+                  <ul class="plat" *ngFor="let p of province_p;let i=index;">
+                    <li *ngIf="i==0" class="selected">
+                      <a (click)="getProvinceSpec(p)">{{p}}</a>
+                    </li>
+                    <li *ngIf="i!=0" class="selected">
+                      <a (click)="getProvinceSpec(p)">{{p}}</a>
+                    </li>
+                  </ul>
+
+                </ul>
+
+              </div>
+              <div class="defalut"  *ngIf="allPic==null">暂无图片</div> 
+              <div class="pic_div" *ngIf="allPic!=null">
+                  <img class="re_img" src="data:image/png;base64,{{allPic}}">
+              </div>
+          </div>
+          <!-- <div class="datechange">
+            <div class="list4">test1</div>
+            <div class="list4" style="display:none">test2</div>
+            <div class="list4" style="display:none">test3</div>
+            <div class="list4" style="display:none">test4</div>
+          </div> -->
+        </div>
+        <div class="box3">
+          <div id="box2-1"><span class="exp5">
+              <font face="黑体">求助病例各省数据</font>
+            </span></div>
+            <ul class="base_re" *ngFor="let re_name of basic_results_name;let i=index">
+              <li>
+                <div class="re_box classfix">
+                  <span class="exp9 re_box1">{{re_name}}</span>&nbsp;
+                  <span class="exp9 re_box2">{{basic_results_num[i]}}例</span>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+      <div class="list1" style="display:none">
+        <div id="kong"></div>
+        <div class="box1">
+          <div id="box1-1">
+            
+            <div class="exp3">
+              <font face="微软雅黑">首页 / 统计分析 / 地区 / 各市</font>
+            </div>
+            <div id="box1-1-1">
+              <font class="tfont" face="黑体" size="8">各市疫情地图</font>
+            </div>
+            <div class="exp3">
+              <font face="微软雅黑" color="#666666">截至{{date}}</font>
+            </div>
+          </div>
+          <div id="box1-2">
+            <div class="exp5">
+              <div id="box1-2-2">
+                <div class="jiacu"> 累计求助</div>
+              </div>
+            </div>
+            <div id="box1-2-1">
+              <font face="黑体" size="8" color="#990000">{{allNumber}}</font>
+            </div>
+            <div>
+              <span class="exp3">
+                <font face="微软雅黑" color="#666666">较昨日</font>
+              </span>
+              <span class="exp3"><span class="jiacu">
+                  <font face="微软雅黑" color="#990000">+{{increaseNumber}}</font>
+                </span></span>
+            </div>
+          </div>
+        </div>
+        <div class="box2">
+          <div id="box2-1">
+            <span class="exp5">
+              <font face="黑体">疫情求助地图</font>
+            </span>
+            <!-- <div class="pochange">
+
+              <ul class="nav2">
+
+                <a href="#" *ngIf="city_p!=null">{{city_p[0]}}</a>
+                <ul class="plat" *ngFor="let p of city_p;let i=index;">
+                  <li *ngIf="i==0" class="selected">
+                    <a href="javascript:;">{{p}}</a>
+                    <ul class="citylist" *ngFor="let c of city_c[i];">
+                      <li><a (click)="getCitySpec(c)">{{c}}</a></li>
+                    </ul>
+                  </li>
+                  <li *ngIf="i!=0">
+                    <a href="javascript:;">{{p}}</a>
+                    <ul class="citylist" *ngFor="let c of city_c[i];">
+                      <li><a (click)="getCitySpec(c)">{{c}}</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </ul>
+
+            </div> -->
+            <!-- <div class="c_alllist">
+              <ul class *ngFor="let p of city_p;let i=index;">
+                <li>
+                  <a class="pro_tit" href="javascript:;">{{p}}</a>
+                  <ul  *ngFor="let c of city_c[i];">
+                    <li class="cit_tit"><a (click)="getCitySpec(c)">{{c}}</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div> -->
+            
+            <div class="defalut"  *ngIf="allPic==null">暂无图片</div> 
+            <div class="pic_div" *ngIf="allPic!=null">
+                <img class="re_img" src="data:image/png;base64,{{allPic}}">
+            </div>
+          </div>
+
+        </div>
+        <div class="box3_right"> 
+          <div class="c_alllist">
+            <ul class *ngFor="let p of city_p;let i=index;">
+              <li>
+                <div class="pro_tit" href="javascript:;">{{p}}</div>
+                <ul  *ngFor="let c of city_c[i];">
+                  <li class="cit_tit"><a (click)="getCitySpec(c)">{{c}}</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="box3">
+          <div id="box2-1"><span class="exp5">
+              <font face="黑体">求助病例各市数据</font>
+            </span></div>
+            <ul class="base_re" *ngFor="let re_name of basic_results_name;let i=index">
+              <li>
+                <div class="re_box classfix">
+                  <span class="exp9 re_box1">{{re_name}}</span>&nbsp;
+                  <span class="exp9 re_box2">{{basic_results_num[i]}}例</span>
+                </div>
+              </li>
+            </ul>
+            
+        </div>
+        
+      </div>
+    </div>
+    <div class="list" style="display:none">
+      <div id="kong"></div>
+      <div class="box1">
+        <div id="box1-1">
+          <div class="exp3">
+            <font face="微软雅黑">首页 / 统计分析 / 年龄</font>
+          </div>
+          <div id="box1-1-1">
+            <font face="黑体" size="8"><span class="title">求助年龄段分布</span></font>
+          </div>
+          <div class="exp3">
+            <font face="微软雅黑" color="#666666">截至{{date}}</font>
+          </div>
+        </div>
+        <div id="box1-2">
+          <div class="exp5">
+            <div id="box1-2-2">
+              <div class="jiacu"> 累计求助</div>
+            </div>
+          </div>
+          <div id="box1-2-1">
+            <font face="黑体" size="8" color="#990000">{{allNumber}}</font>
+          </div>
+          <div>
+            <span class="exp3">
+              <font face="微软雅黑" color="#666666">较昨日</font>
+            </span>
+            <span class="exp3"><span class="jiacu">
+                <font face="微软雅黑" color="#990000">+{{increaseNumber}}</font>
+              </span></span>
+          </div>
+        </div>
+      </div>
+      <div class="box2">
+        <div id="box2-1"><span class="exp5">
+            <font face="黑体">求助患者年龄段分布图</font>
+          </span></div>
+          <div class="defalut"  *ngIf="allPic==null">暂无图片</div> 
+          <div class="pic_div" *ngIf="allPic!=null">
+              <img class="re_img" src="data:image/png;base64,{{allPic}}">
+          </div>
+      </div>
+      <div class="box3">
+        <div id="box2-1"><span class="exp5">
+            <font face="黑体">求助病例年龄数据</font>
+          </span></div>
+          <ul class="base_re" *ngFor="let re_name of basic_results_name;let i=index">
+            <li>
+              <div  class="re_box classfix">
+                <span class="exp9 re_box1">{{re_name}}<span *ngIf="re_name!='100以上'">岁</span></span>&nbsp;
+                <span class="exp9 re_box2">{{basic_results_num[i]}}例</span>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <div class="list" style="display:none">
+      <div id="kong"></div>
+      <div class="box1">
+        <div id="box1-1">
+          <div class="exp3">
+            <font face="微软雅黑">首页 / 统计分析 / 时间</font>
+          </div>
+          <div id="box1-1-1">
+            <font face="黑体" size="8"><span class="title">患病时间统计</span></font>
+          </div>
+          <div class="exp3">
+            <font face="微软雅黑" color="#666666">截至{{date}}</font>
+          </div>
+        </div>
+        <div id="box1-2">
+          <div class="exp5">
+            <div id="box1-2-2">
+              <div class="jiacu">年累计求助</div>
+            </div>
+          </div>
+          <div id="box1-2-1">
+            <font face="黑体" size="8" color="#990000">{{allNumber}}</font>
+          </div>
+          <div>
+            <span class="exp3">
+              <font face="微软雅黑" color="#666666">较昨日</font>
+            </span>
+            <span class="exp3"><span class="jiacu">
+                <font face="微软雅黑" color="#990000">+{{increaseNumber}}</font>
+              </span></span>
+          </div>
+        </div>
+      </div>
+      <div class="box2">
+          <div id="box2-1">
+            <div class="exp5" id="box2-3">
+              <font face="黑体">患病时间统计图</font>
+            </div>
+            <div id="box2-2">
+              <ul class="nav3">
+                <li class="selected" (click)="getYear()">年</li>
+                <li (click)="getMonth()">月</li>
+                <li (click)="getDay()">日</li>
+              </ul>
+            </div>
+          </div>
+          <div class="defalut"  *ngIf="allPic==null">暂无图片</div> 
+          <div class="pic_div" *ngIf="allPic!=null">
+              <img class="re_img" src="data:image/png;base64,{{allPic}}">
+          </div>
+        <!-- <div class="datechange">
+          <div class="list3">test1</div>
+          <div class="list3" style="display:none">test2</div>
+          <div class="list3" style="display:none">test3</div>
+        </div> -->
+      </div>
+      <div class="box3">
+        <div id="box2-1"><span class="exp5">
+            <font face="黑体">患病时间数据</font>
+          </span></div>
+          <ul class="base_re" *ngFor="let re_name of basic_results_name;let i=index">
+            <li *ngIf="m_flag==0">
+              <div  class="re_box classfix">
+                <span class="exp9 re_box1">{{re_name}}<span *ngIf="re_name!='100以上'"></span></span>&nbsp;
+                <span class="exp9 re_box2">{{basic_results_num[i]}}例</span>
+              </div>
+            </li>
+          </ul>
+
+          <ul class="base_re" *ngFor="let year of yearlist;let i=index">
+            <li *ngIf="m_flag==1">
+              <div class="re_box classfix">
+                <span class="exp9 re_box1">{{year}} 年</span>&nbsp;
+                <span class="exp9 re_box1">{{monthlist[i]}} 月</span>&nbsp;
+                <span class="exp9 re_box2">{{num_month[i]}}例</span>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+
+</div>

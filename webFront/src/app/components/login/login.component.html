@@ -1,0 +1,42 @@
+
+    <!-- 首页内容区 -->
+    <div class="main-content classfix">
+        <div class="inter-window">
+            <h2>医疗数据分析平台</h2>
+            <div class="tit classfix">
+                <h1>账户登录</h1>
+                <a class="alogin" [routerLink]="[ '/regist' ]">立即注册</a>
+            </div>
+            <div class="msg_cont">
+                <b></b>
+                <span class="errorMsg">
+                    {{msg}}
+                </span>
+            </div>
+        
+            <form action="userServlet" method="POST">
+                <input type="hidden" name="action" value="login">
+                <div>
+                    <label>用户名称：</label>
+                    <input class="itxt" type="text" placeholder="请输入用户名"
+                        autocomplete="off" tabindex="1" name="username" [(ngModel)]="username"/>
+                    <br />
+                    <br />
+
+                </div>
+                
+                <div>
+                    <label>用户密码：</label>
+                    <input class="itxt" type="password" placeholder="请输入密码"
+                        autocomplete="off" tabindex="1" name="password" [(ngModel)]="password"/>
+                    <br />
+                    <br />
+                </div>
+                <div>
+                    <button id="sub_btn" (click)="checkUser()">登录</button>
+                    <!-- <input type="submit" value="登录" id="sub_btn"> -->
+                </div>
+            
+            </form>
+        </div>
+    </div>

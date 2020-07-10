@@ -1,0 +1,87 @@
+@import "../../../../../assets/fa/css/all.min.css";
+.inner{
+    width: 98%;
+    margin: 0 auto;
+    height: 100%;
+    background-color: white;
+    .tit{
+        color:rgb(25,144,255);
+        font-weight: bold;
+        text-align: center;
+        line-height: 100px;
+        font-size: 30px;
+        
+    }
+    .introduce{
+        width: 80%;
+        padding: 2%;
+        margin:0 auto;
+        p:first-child{
+            font-size:24px;
+        }
+        .fa-hand-holding-heart{
+            color: rgb(203,0,0);
+        }
+    }
+    .details{
+        margin-top: 100px;
+        width: 70%;
+        margin: 0 auto;
+        font-size:22px;
+        ul{
+            .label{
+                // color: brown;
+                font-weight: bold;
+            }
+            >li{
+                margin:2% auto;
+                
+                .bold{
+                    font-weight: bold;
+                }
+                >div{
+                    font-size: 18px;
+                    padding-left: 2%;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 780px) {
+	.inner{
+
+        .tit{
+
+            font-size: 30px;
+            
+        }
+        .introduce{
+
+            p:first-child{
+                font-size:24px;
+            }
+        }
+        .details{
+
+        }
+    }
+}
+@media screen and (max-width: 400px) {
+	.inner{
+
+        .tit{
+
+            font-size: 30px;
+            
+        }
+        .introduce{
+
+            p:first-child{
+                font-size:18px;
+            }
+        }
+        .details{
+
+        }
+    }
+}

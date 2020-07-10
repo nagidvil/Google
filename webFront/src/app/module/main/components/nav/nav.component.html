@@ -1,0 +1,30 @@
+<div id="nav" class="nav">
+    <h1>
+        <a [routerLink]="[ '/main/welcome' ]">医疗数据分析平台</a>
+    </h1>
+    <h1 class="user-nav">
+        <span *ngIf="username!=''"><i class="fas fa-user"></i>{{username}}</span>
+        <span><a [routerLink]="[ '/login' ]"  *ngIf="username==''"> <i class="fas fa-user"></i>登录&nbsp;</a></span>
+        <span> |&nbsp;</span>
+        <span><a [routerLink]="[ '/regist' ]">注册</a></span>
+        <span> |&nbsp;</span>
+        <span><a (click)="logOff()">退出</a></span>
+    </h1>
+    <div class="collapsed">
+        <span class="menuSpan"><i class="iconfont">&#xe5e7;</i>获取数据</span>
+        <a  class="subNav" [routerLink]="[ '/main/gainWebInfo' ]">&nbsp;&nbsp;&nbsp;&nbsp;自定义网页</a>
+    </div>
+    <div class="collapsed">
+        <span class="menuSpan"><i class="iconfont">&#xe641;</i>统计分析</span>
+        <a  class="subNav" [routerLink]="[ '/main/statistics']">&nbsp;&nbsp;&nbsp;&nbsp;统计分析</a>
+    </div>
+    <div class="collapsed">
+        <span class="menuSpan"><i class="iconfont">&#xe61d;</i>地区预警</span>
+        <a  class="subNav" [routerLink]="[ '/main/regionalWarning']">&nbsp;&nbsp;&nbsp;&nbsp;地区预警</a>
+    </div>
+    <div class="collapsed">
+        <span class="menuSpan"><i class="iconfont">&#xe65d;</i>危急患者</span>
+        <a  class="subNav" [routerLink]="[ '/main/criticalPatients' ]">&nbsp;&nbsp;&nbsp;&nbsp;危急患者</a>
+    </div>
+    <span class="copyright">copyright@2020</span>
+</div>

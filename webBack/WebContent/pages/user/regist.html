@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+   
+    <link rel="stylesheet" href="../../static/login_regist_base.css">
+    <script>
+        $(function(){
+			
+        	// 给验证码的图片，绑定单击事件
+			$("#code_img").click(function () {
+				this.src = "${basePath}kaptcha.jpg?d=" + new Date();
+			});
+        	
+            // 提交表单的验证
+            $("#sub_btn").click(function(){
+
+                var usernameText=$("#username").val();
+
+                var usernamePatt=/^\w{5,12}$/;
+                var flag=true;
+                if(!usernamePatt.test(usernameText)){
+                    $("span.errorMsg").text("用户名不合法");
+                    flag=false;
+                    return false;
+                }
+                $("span.errorMsg").text("");
+
+                var passwordText=$("#password").val();
+                var passwordPatt=/^\w{5,12}$/;
+                if(!passwordPatt.test(passwordText))
+                {
+                    $("span.errorMsg").text("密码不合法");
+                    flag=false;
+                    return false;
+                }
+                $("span.errorMsg").text("");
+
+                var repwdText=$("#repwd").val();
+                if(repwdText!=passwordText)
+                {
+                    $("span.errorMsg").text("确认密码不一致");
+                    flag=false;
+                    return false;
+                }
+                $("span.errorMsg").text("");
+
+                var emailText=$("#email").val();
+                var emailPatt=/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/;
+                if(!emailPatt.test(emailText))
+                {
+                    $("span.errorMsg").text("邮箱格式错误");
+                    flag=false;
+                    return false;
+                }
+                $("span.errorMsg").text("");
+
+                return flag;
+            })
+            
+        })
+    </script>
+    
+</head>
+
+<body>
+    <!-- 首页内容区 -->
+    <div class="main-content classfix">
+        <div class="inter-window">
+            <h2>医疗数据分析平台</h2>
+            <div class="tit">
+                <h1>注册</h1>
+                <span class="errorMsg">
+               		<%=request.getAttribute("msg") ==null?"":request.getAttribute("msg")%>
+               	</span>
+            </div>
+        
+            <form action="userServlet" method="POST">
+            	<input type="hidden" name="action" value="regist">
+                <div>
+					<label>用户名称：</label>
+					<input class="itxt" type="text" placeholder="请输入用户名"
+						   autocomplete="off" tabindex="1" name="username" id="username"
+						   value="${requestScope.username}"
+						    />
+					<br />
+					<br />
+                </div>
+                
+                <div>
+					<label>用户密码：</label>
+					<input class="itxt" type="password" placeholder="请输入密码"
+						   autocomplete="off" tabindex="1" name="password" id="password" />
+					<br />
+					<br />
+                </div>
+                <div>
+					<label>确认密码：</label>
+					<input class="itxt" type="password" placeholder="确认密码"
+						   autocomplete="off" tabindex="1" name="repwd" id="repwd" />
+					<br />
+					<br />
+                </div>
+                <div>
+					<label>电子邮件：</label>
+					<input class="itxt" type="text" placeholder="请输入邮箱地址"
+						   autocomplete="off" tabindex="1" name="email" id="email" 
+						   value="${requestScope.email}"
+						   />
+					<br />
+					<br />
+                </div>
+                <div>
+					<label>验证码：</label>
+					<input class="itxt" type="text" name="code" style="width: 150px;" id="code" />
+					  <img id="code_img" alt="" src="kaptcha.jpg" style="float: right; margin-left: 30px">
+					<br />
+					<br />
+                </div>
+                
+                <div>
+                    <input type="submit" value="注册" id="sub_btn">
+                </div>
+               
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
