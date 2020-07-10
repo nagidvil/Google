@@ -11,7 +11,7 @@
 Demo
 ## 网站访问：
 ### 1.登录 
-![image](images/log.png)
+![image](https://github.com/nagidvil/Google/blob//master/images/log.png)
 可利用已经注册的账号进行登录，跳转到首页。
 ### 2.注册
 ![image](https://github.com/nagidvil/Google/blob/master/images/regist.png)
