@@ -5,4 +5,4 @@
 安装成功后，执行npm run start
 在浏览器中打开http://localhost:4200/
 即可访问操作
-如果操作不成功，请您可以修改webFront中的proxy.fig.json中的"target":为39.106.175.112:
+如果操作不成功，请您可以修改webFront中的proxy.fig.json中的"target":为http://39.106.175.112:8080/GoogleHTML
